@@ -1,4 +1,6 @@
 from celery import Celery
+from datetime import datetime
+from airflow import DAG
 
 REDIS_HOST = "localhost"
 REDIS_PORT = 6379
