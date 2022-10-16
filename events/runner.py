@@ -1,6 +1,6 @@
 from celery import Celery
 import redis
-from events.tasks import add
+from events.tasks import add, af
 
 REDIS_HOST = "localhost"
 REDIS_PORT = 6379
@@ -12,8 +12,10 @@ while True:
     msg = sub.get_message()
     if msg is not None:
         print("Running...")
-        res=add.delay(2,2)
-        res.get(timeout=1)
+        # res=add.delay(2,2)
+        # res.get(timeout=1)
+        res=af.delay()
+        # res.get(timeout=1)
 
 
 

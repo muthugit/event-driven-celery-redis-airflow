@@ -27,6 +27,18 @@ def add(x, y):
 
 @app.task
 def af():
+    from requests.auth import HTTPBasicAuth
+    import requests
+    import json
+    import base64
+    from dateutil import tz
+    from zoneinfo import ZoneInfo
+    from datetime import datetime
+    from airflow import DAG
+    from datetime import datetime, timedelta
+
+
+    print("Executing")
     airflow_host = "localhost:8080"
     airflow_username = "airflow"
     airflow_password = "airflow"
@@ -60,7 +72,8 @@ def af():
         )
         result_json = result.json()
         print(result_json)
+    return True
 
 
-af()
+# af()
 
