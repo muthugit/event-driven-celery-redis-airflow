@@ -1,6 +1,8 @@
 # Celery - Redis - Airflow
 [A proof of concept]
 
+## Objective
+The objective of this PoC is to trigger a Airflow pipeline when new message send to Redis queue
 
 
 ## Install the dependencies
