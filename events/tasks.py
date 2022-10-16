@@ -42,11 +42,8 @@ def af():
     airflow_host = "localhost:8080"
     airflow_username = "airflow"
     airflow_password = "airflow"
-    start = datetime.now()
-    end = start + timedelta(minutes=1)
+
     dag = "first_sample_dag"
-    days = (end -start).days
-    execution_datetime = (start + timedelta(minutes=1)).strftime('%Y-%m-%dT%H:%M:%SZ')
     url = f'http://{airflow_host}/api/v1/dags/{dag}/dagRuns'
     up = f"{airflow_username}:{airflow_password}".encode("utf=8")
     
@@ -56,10 +53,7 @@ def af():
         # 'Authorization': f"B {base64.b64encode(up)}"
     }
     data = {
-        'conf': {},
-        'dag_run_id': f'manual_api_{execution_datetime}',
-        'logical_date': execution_datetime,
-        'execution_date': execution_datetime
+        'conf': {}
     }
     print(url)
     result = requests.post(
