@@ -49,6 +49,8 @@ services:
     ports:
       - 8080:8080
     container_name: airflow_webserver
+    volumes:
+      - ./events/airflow.cfg:/opt/airflow/airflow.cfg
     restart: always
 
   airflow-scheduler:
