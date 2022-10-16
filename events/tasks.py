@@ -43,35 +43,33 @@ def af():
     airflow_username = "airflow"
     airflow_password = "airflow"
     start = datetime.now()
-    end = start + timedelta(days=1)
+    end = start + timedelta(minutes=1)
     dag = "first_sample_dag"
     days = (end -start).days
-    for i in range(days):
-        execution_datetime = (start + timedelta(hours=1)).strftime('%Y-%m-%dT%H:%M:%SZ')
-
-        url = f'http://{airflow_host}/api/v1/dags/{dag}/dagRuns'
-        up = f"{airflow_username}:{airflow_password}".encode("utf=8")
-        
-        headers = {
-            'Content-type': 'application/json', 
-            # 'Accept': 'application/json',
-            # 'Authorization': f"B {base64.b64encode(up)}"
-        }
-        data = {
-            'conf': {},
-            'dag_run_id': f'manual_api_{execution_datetime}',
-            'logical_date': execution_datetime,
-            'execution_date': execution_datetime
-        }
-        print(url)
-        result = requests.post(
-            url,
-            json=data,
-            headers=headers,
-            auth=(airflow_username, airflow_password)
-        )
-        result_json = result.json()
-        print(result_json)
+    execution_datetime = (start + timedelta(minutes=1)).strftime('%Y-%m-%dT%H:%M:%SZ')
+    url = f'http://{airflow_host}/api/v1/dags/{dag}/dagRuns'
+    up = f"{airflow_username}:{airflow_password}".encode("utf=8")
+    
+    headers = {
+        'Content-type': 'application/json', 
+        # 'Accept': 'application/json',
+        # 'Authorization': f"B {base64.b64encode(up)}"
+    }
+    data = {
+        'conf': {},
+        'dag_run_id': f'manual_api_{execution_datetime}',
+        'logical_date': execution_datetime,
+        'execution_date': execution_datetime
+    }
+    print(url)
+    result = requests.post(
+        url,
+        json=data,
+        headers=headers,
+        auth=(airflow_username, airflow_password)
+    )
+    result_json = result.json()
+    print(result_json)
     return True
 
 
