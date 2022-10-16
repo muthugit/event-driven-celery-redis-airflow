@@ -1,11 +1,7 @@
-# event-driven-celery-redis-airflow
+# Celery - Redis - Airflow
+[A proof of concept]
 
-celery -A events.tasks worker --loglevel=INFO
 
-
-https://towardsdatascience.com/a-complete-introduction-to-apache-airflow-b7e238a33df
-
-https://towardsdatascience.com/setting-up-apache-airflow-with-docker-compose-in-5-minutes-56a1110f4122
 
 ## Install the dependencies
 ```
